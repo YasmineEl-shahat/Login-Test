@@ -1,11 +1,30 @@
+import axios from 'axios';
+import React from 'react';
 
-function App() {
+class App extends React.Component {
+  state = {
+    dataa:"" ,
+  }
+//   componentDidMount(){
+//     axios.get("http://localhost:3000/notebooks/1").then(res => {
+//     this.setState({
+//       dataa: res.data
+//     }) 
+
+//   });
+  
+//  };
  
-  return (
-    <div className="App">
-     Hello world
-    </div>
-  );
+
+ render (){
+   return (
+     <>
+    
+       {/* <img src={`/images/${this.state.dataa.image}`} alt="this is laptop"/> */}
+     </>
+   );
+
+ }
 }
 
 export default App;
