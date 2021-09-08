@@ -15,7 +15,6 @@ class App extends React.Component {
   
 //  };
  
-<<<<<<< HEAD
 
  render (){
    return (
@@ -26,12 +25,6 @@ class App extends React.Component {
    );
 
  }
-=======
-  return (
-    <div className="App">
-    </div>
-  );
->>>>>>> f06f3947dff9e08719dad456e681e6dafde72e83
-}
+
 
 export default App;
