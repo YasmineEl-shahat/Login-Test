@@ -11,3 +11,66 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+li{
+  margin-left: 70px;
+  margin-right: 40px;
+}
+i{
+  margin-left: 10px;
+}
+.btn-primary{
+  margin-left: 130px;
+  width: 100px;
+}
+.btn-black{
+  margin-left: 2px;
+}
+
+
+img{
+  box-sizing: border-box;
+  padding: 50px;
+  
+  width: 300px;
+  height: 350px;
+}
+.big{
+
+  
+  background-color: #F8F8F8	;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+}
+
+a{
+  margin-left: 70px;
+
+}
+.cart{
+  margin-left: 70px;
+
+}
+
+.labs{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.device{
+  box-sizing: border-box;
+  
+ width: 360px;
+ height: 500px;
+ background:white;
+ margin: 10px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ /* justify-content: center; */
+
+ /* flex-wrap: wrap; */
+}
