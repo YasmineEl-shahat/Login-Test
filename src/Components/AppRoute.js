@@ -1,9 +1,10 @@
 import React from 'react';
 import {BrowserRouter as Router, Route} from "react-router-dom";
-import Header from './Header';
 import Home from './Home';
 import Notebooks from './Notebooks';
 import Smartphones from './Smartphone';
+import login from './Login';
+import Signup from "./Signup";
 
 class AppRoute extends React.Component {
     state={
@@ -12,16 +13,11 @@ class AppRoute extends React.Component {
     render() { 
         return (
             <Router>
-                            <Route path="/Header" component={Header} />
-
-
+                <Route path="/login" component={login} exact />
+                <Route path="/register" component={Signup} exact />
                 <Route path="/" component={Home} exact/>
                 <Route path="/notebooks" component={Notebooks} exact />
-                <Route path="/Smartphone" component={Smartphones} exact/>
-
-                
-
-                
+                <Route path="/Smartphone" component={Smartphones} exact/>          
             </Router>
         );
     }
