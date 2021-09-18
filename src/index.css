@@ -19,7 +19,7 @@ li {
 i {
   margin-left: 10px;
 }
-.btn-primary {
+.w {
   margin-left: 130px;
   width: 100px;
 }
@@ -106,4 +106,51 @@ img {
 .box:hover {
   background: lightgray;
   cursor: pointer;
+}
+.detail{
+  margin-left: 300px;
+  margin-top: 100px;
+  padding: 10px;
+display: flex; 
+background-color: white; 
+
+}
+.n{
+width: 500px;}
+span{
+  font-size: 30px;
+}
+.btns{
+  width: 200px;
+  margin-left: 70px;
+  margin-top: 5px;
+
+}
+.info1
+{
+  width: 100%;
+  max-width: 500px;
+  height: 300px;
+  box-sizing: border-box;
+  padding: 1em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background-color: #fff;
+  box-shadow: 0 0 10px hsla(0,0%,56%,.2);
+  border: 0;
+  border-radius: 5px;
+  line-height: 1.5em;
+  opacity: 1;
+  transition: all .5s;
+  z-index: 1;    
+  display: none;
+}
+.show{
+  display: block;
+}
+.btn-danger{
+  margin-top: 50px;
+  margin-left: 100px;
 }
