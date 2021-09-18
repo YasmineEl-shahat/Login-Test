@@ -25,7 +25,7 @@ let Header = (props) =>{
                   <li className="nav-item">
                     <Link className="nav-link  text-white" to="/Notebooks">Notebooks</Link>
                   </li>
-                  <button  className="btn  btn-primary  " >Cart <i class="fas fa-shopping-cart  "></i></button>
+                  <button  className="btn  btn-primary w  " >Cart <i class="fas fa-shopping-cart  "></i></button>
                   <li className="nav-item">
                    {!(loginData || RegisterData) && <Link to="/login"><i class="fas fa-user text-white"></i></Link>}
                    {loginData && <button  className="btn  btn-black text-white userbtn">Hello, {loginData.userName}</button>}

@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import Header from "./Header";
+import { Link } from 'react-router-dom';
+
 export default class Notebooks extends React.Component{
     state={
         notebooks:"",
@@ -39,7 +41,13 @@ export default class Notebooks extends React.Component{
                                 <>
                                     <div className="device">
                                         <img className="" src={`/images/${note.image}`} alt="this is laptop"/>
-                                        <a href="#">{note.name}</a>
+                                        <Link to={
+                                    {
+                                        pathname: '/Details',
+                                        ref:note
+
+                                    }
+                                      }>{note.name}</Link>
                                         <span>${note.price}</span>
                                         <button  className="btn  btn-success " >Add to Cart<i class="fas fa-shopping-cart "></i> </button>
                                     </div>
