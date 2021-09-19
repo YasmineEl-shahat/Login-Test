@@ -26,9 +26,26 @@ export default class Smartphones extends React.Component{
             devices
         });
         window.localStorage.setItem("devices", JSON.stringify(devices));
-        // let pathh = this.props.location.pathname;
-        // this.props.history.push(pathh);
     }
+    removeDev = (id) => {
+        let devices = [...this.state.devices]; 
+        devices = devices.filter(p => p.id !== id);
+        if(devices.length === 0){
+          window.localStorage.removeItem("devices");
+        }
+        else window.localStorage.setItem("devices", JSON.stringify(devices));
+        this.setState({
+            devices
+        });
+      }
+      clear = () =>{
+        window.localStorage.removeItem("devices");
+        let devices = [...this.state.devices]; 
+        devices = [];
+        this.setState({
+            devices
+        });
+      }
     render(){
         if(!this.state.smartphones){
             return(
@@ -40,7 +57,7 @@ export default class Smartphones extends React.Component{
         else{
             return(
                 <>
-                    <Header props={this.props}/>
+                    <Header props={this.props} removeDev={this.removeDev} clear={this.clear}/>
 
                     <div className="big">
                         <div className="labs">
