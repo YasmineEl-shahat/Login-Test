@@ -92,7 +92,7 @@ export default class Home extends React.Component{
                                                 pathname: '/Details',
                                                 ref:note
                                             }
-                                      }>{note.name}</Link>
+                                      } className="name">{note.name}</Link>
                                             <span>$ {note.price}</span>
                                             <button  onClick={() => this.AddToCart(note)} className="btn  btn-success " >Add to Cart<i class="fas fa-shopping-cart "></i> </button>
                                         </div>
@@ -111,7 +111,7 @@ export default class Home extends React.Component{
                                                 ref:phone
 
                                             }
-                                            }>{phone.name}</Link>
+                                            } className="name">{phone.name}</Link>
                                             <span>${phone.price}</span>
                                             <button  onClick={() => this.AddToCart(phone)} className="btn  btn-success " >Add to Cart<i class="fas fa-shopping-cart "></i> </button>     
                                         </div>

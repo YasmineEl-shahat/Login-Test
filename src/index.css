@@ -267,3 +267,12 @@ img {
   width: 200px;
   height: 200px;
 }
+.btn-success {
+  width: 80%;
+}
+.name {
+  color: black;
+  font-size: large;
+  border-bottom: none;
+  text-align: justify;
+}

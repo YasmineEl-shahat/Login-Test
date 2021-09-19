@@ -74,7 +74,7 @@ export default class Notebooks extends React.Component{
                                                 ref:note
 
                                             }
-                                            }>{note.name}</Link>
+                                            } className="name">{note.name}</Link>
                                         <span>${note.price}</span>
                                         <button onClick={() => this.AddToCart(note)} className="btn  btn-success " >Add to Cart<i class="fas fa-shopping-cart "></i> </button>
                                     </div>
