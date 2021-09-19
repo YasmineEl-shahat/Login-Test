@@ -63,8 +63,8 @@ export default class Details extends React.Component{
                  
             </div>
             <div className="info1">
-              <div >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s</div>
-              <button  className="btn  btn-danger btns" onClick={this.hide} >Close</button>  
+              <div className="inf">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s</div>
+              <button  className="btn  btn-danger closeInf" onClick={this.hide} >Close</button>  
            </div>
             
             </>

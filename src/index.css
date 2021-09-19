@@ -276,3 +276,13 @@ img {
   border-bottom: none;
   text-align: justify;
 }
+.closeInf {
+  position: absolute;
+  top: 10rem;
+  left: 15rem;
+  width: 20%;
+}
+.inf {
+  padding: 1em;
+  text-align: justify;
+}
