@@ -1,8 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Header from './Header';
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
 export default class Home extends React.Component{
     state={
         notebooks:"",
@@ -11,12 +10,12 @@ export default class Home extends React.Component{
         price: '',
         name:'',
         smartphones:"",
-        error: ""
-
+        error: "",
+        devices:JSON.parse(window.localStorage.getItem("devices"))? JSON.parse(window.localStorage.getItem("devices")): []
     }
-    componentDidMount()
+    async componentDidMount()
     {
-        axios.get("http://localhost:3000/notebooks").then(res => {
+        await axios.get("http://localhost:3000/notebooks").then(res => {
         this.setState({
             notebooks: res.data
             })
@@ -37,8 +36,19 @@ export default class Home extends React.Component{
                 error: e
             })
         });
-        
     };
+    
+    AddToCart (prod){
+        let pathh = this.props.location.pathname;
+        this.props.history.push(pathh);
+        let devices = [...this.state.devices];
+        if(!devices.find(product => prod === product)) devices.push(prod);
+        this.setState({
+            devices
+        });
+        window.localStorage.setItem("devices", JSON.stringify(devices)); 
+        this.props.history.push(pathh);
+    }
     render()
     {
         if (!this.state.notebooks || !this.state.smartphones) {
@@ -51,7 +61,7 @@ export default class Home extends React.Component{
         else {
             return (
                 <>
-                    <Header props={this.props}/>
+                    <Header props={this.props} />
 
 
                     <div  className="big">   
@@ -62,14 +72,13 @@ export default class Home extends React.Component{
                                         <div className="device">
                                             <img className="" src={`/images/${note.image}`} alt="this is laptop"/>
                                             <Link to={
-                                    {
-                                        pathname: '/Details',
-                                        ref:note
-
-                                    }
+                                            {
+                                                pathname: '/Details',
+                                                ref:note
+                                            }
                                       }>{note.name}</Link>
-                                            <span>$ {note.price }</span>
-                                            <button  className="btn  btn-success " >Add to Cart<i class="fas fa-shopping-cart "></i> </button>
+                                            <span>$ {note.price}</span>
+                                            <button  onClick={() => this.AddToCart(note)} className="btn  btn-success " >Add to Cart<i class="fas fa-shopping-cart "></i> </button>
                                         </div>
                                     </>         
                                 )})
@@ -81,14 +90,14 @@ export default class Home extends React.Component{
                                         <div className=" device">
                                             <img src={`/images/${phone.image}`} alt="this is laptop" />
                                             <Link to={
-                                    {
-                                        pathname: '/Details',
-                                        ref:phone
+                                            {
+                                                pathname: '/Details',
+                                                ref:phone
 
-                                    }
-                                      }>{phone.name}</Link>
+                                            }
+                                            }>{phone.name}</Link>
                                             <span>${phone.price}</span>
-                                            <button  className="btn  btn-success " >Add to Cart<i class="fas fa-shopping-cart "></i> </button>     
+                                            <button  onClick={() => this.AddToCart(phone)} className="btn  btn-success " >Add to Cart<i class="fas fa-shopping-cart "></i> </button>     
                                         </div>
                                     </>
                                 )
