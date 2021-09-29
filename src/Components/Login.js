@@ -11,7 +11,6 @@ class Login extends Component {
      
      async componentWillMount(){
         await AssureLogin(this.props);
-
         if(this.props.location.state){
             this.setState({
                 error: this.props.location.state.error
@@ -43,7 +42,7 @@ class Login extends Component {
                                 })
                             }} required /> 
                             <span></span>
-                            <label htmlFor="username">Username</label>
+                            <label htmlFor="username">Enter username or email</label>
                         </div>
                         <div className="txt_field"> 
                             <input name="password" type="password" value={this.state.password} onChange={e => {

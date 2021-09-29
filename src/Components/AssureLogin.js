@@ -13,8 +13,7 @@ let AssureLogin= async (props) =>{
                });
            const user = usernames.find(i => i === loginData.userName) || emails.find(i => i === loginData.userName);
            if(user){
-               const id = (usernames.indexOf(user) + 1|| emails.indexOf(user) + 1);
-               console.log(id);
+               const id = (usernames.indexOf(user) + 1 || emails.indexOf(user) + 1);
                await axios.get(`http://localhost:3000/registers/${id}`).then(res =>{
                    if(loginData.password === res.data.password){
                        loginData.userName = res.data.userName;
@@ -29,9 +28,10 @@ let AssureLogin= async (props) =>{
                        });
                    }
                }).catch(err =>{
+                    error = "request Faild!";
                 props.history.push({
                     pathname: "/login",
-                    state: {err}
+                    state: {error}
                 });
                });
            }else {
@@ -45,7 +45,7 @@ let AssureLogin= async (props) =>{
        }
 
        if(error){
-        window.localStorage.removeItem("loginData");
+            window.localStorage.removeItem("loginData");
        }
 }
 export default AssureLogin;

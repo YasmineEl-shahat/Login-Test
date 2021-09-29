@@ -5,10 +5,6 @@ import { Link } from "react-router-dom";
 export default class Home extends React.Component{
     state={
         notebooks:"",
-        id:'',
-        image: '',
-        price: '',
-        name:'',
         smartphones:"",
         error: "",
         devices:JSON.parse(window.localStorage.getItem("devices"))? JSON.parse(window.localStorage.getItem("devices")): []
@@ -21,7 +17,6 @@ export default class Home extends React.Component{
             })
     
         }).catch(e =>{
-            console.log(e);
             this.setState({
                 error: e
             })
@@ -31,7 +26,6 @@ export default class Home extends React.Component{
                 smartphones: res.data
             })
         }).catch(e =>{
-            console.log(e);
             this.setState({
                 error: e
             })
@@ -52,12 +46,12 @@ export default class Home extends React.Component{
         if(devices.length === 0){
           window.localStorage.removeItem("devices");
         }
-        else window.localStorage.setItem("devices", JSON.stringify(devices));
+        window.localStorage.setItem("devices", JSON.stringify(devices));
         this.setState({
             devices
         });
       }
-      clear = () =>{
+    clear = () =>{
         window.localStorage.removeItem("devices");
         let devices = [...this.state.devices]; 
         devices = [];
@@ -88,11 +82,11 @@ export default class Home extends React.Component{
                                         <div className="device">
                                             <img className="" src={`/images/${note.image}`} alt="this is laptop"/>
                                             <Link to={
-                                            {
-                                                pathname: '/Details',
-                                                ref:note
-                                            }
-                                      } className="name">{note.name}</Link>
+                                                    {
+                                                        pathname: `/${note.category}/${note.id}`
+                                                    }
+                                                    }
+                                             className="name">{note.name}</Link>
                                             <span>$ {note.price}</span>
                                             <button  onClick={() => this.AddToCart(note)} className="btn  btn-success " >Add to Cart<i class="fas fa-shopping-cart "></i> </button>
                                         </div>
@@ -107,9 +101,8 @@ export default class Home extends React.Component{
                                             <img src={`/images/${phone.image}`} alt="this is laptop" />
                                             <Link to={
                                             {
-                                                pathname: '/Details',
-                                                ref:phone
-
+                                                pathname: `/${phone.category}/${phone.id}`,
+                                            
                                             }
                                             } className="name">{phone.name}</Link>
                                             <span>${phone.price}</span>

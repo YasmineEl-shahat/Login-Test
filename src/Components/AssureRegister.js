@@ -15,19 +15,19 @@ let AssureRegister= async (props) =>{
            const user = usernames.find(i => i === RegisterData.userName) || emails.find(i => i === RegisterData.email);
            if(!user){
                const id = usernames.length + 1;
-               console.log(id);
                const newUser = {
                    "id": id,
                    "userName": RegisterData.userName,
                    "email": RegisterData.email,
                    "password": RegisterData.password
                }
-               await axios.post(`http://localhost:3000/registers`, newUser).then(res =>{
+               await axios.post(`http://loalhost:3000/registers`, newUser).then(res =>{
                    props.history.push("/");  
                }).catch(err =>{
+                error = "Request error!"
                 props.history.push({
                     pathname: "/register",
-                    state: {err}
+                    state: {error}
                 });
                });
            }else if(usernames.find(i => i === RegisterData.userName)) {

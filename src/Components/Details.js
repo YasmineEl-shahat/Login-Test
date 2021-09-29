@@ -1,22 +1,32 @@
 import React from "react";
+import axios from "axios";
 import Header from './Header';
 
 export default class Details extends React.Component{
     state={
-      devices:JSON.parse(window.localStorage.getItem("devices"))? JSON.parse(window.localStorage.getItem("devices")): []
+      devices:JSON.parse(window.localStorage.getItem("devices"))? JSON.parse(window.localStorage.getItem("devices")): [],
+      device: {}
     }
-     show (){
-        let Info = document.querySelector(".info1");
-        Info.classList.add("show");
-      }
-      hide(){
-        let Info = document.querySelector(".info1");
-        Info.classList.remove("show");
-          
-      }
+    show (){
+      let Info = document.querySelector(".info1");
+      Info.classList.add("show");
+    }
+    hide(){
+      let Info = document.querySelector(".info1");
+      Info.classList.remove("show");
+    }
     
-   
-      AddToCart (prod){
+    componentDidMount(){
+      const id = this.props.match.params.id;
+      const category = this.props.match.params.category;
+      axios.get(`http://localhost:3000/${category}/${id}`).then(res => {
+      this.setState({
+          device: res.data
+          })
+  
+      });
+  };
+    AddToCart (prod){
         let devices = [...this.state.devices];
         if(!devices.find(product => prod === product)) devices.push(prod);
         this.setState({
@@ -44,17 +54,17 @@ export default class Details extends React.Component{
       });
     }
     render(){
+
         return(
             <>
             <Header props={this.props} removeDev={this.removeDev} clear={this.clear}/>
-        
 
             <div className="detail">
-              <img className="" src={`/images/${this.props.location.ref.image}`} alt="this is laptop"/>
+              <img className="" src={`/images/${this.state.device.image}`} alt="this is laptop"/>
               <div className="n">
-              <span>  {this.props.location.ref.name}</span>
-              <h3>$  {this.props.location.ref.price}</h3>
-              <button  onClick={() => this.AddToCart(this.props.location.ref)} className="btn  btn-success btns" >Buy Now<i class="fas fa-shopping-cart "></i> </button> 
+              <span>  {this.state.device.name}</span>
+              <h3>$  {this.state.device.price}</h3>
+              <button  onClick={() => this.AddToCart(this.state.device)} className="btn  btn-success btns" >Buy Now<i class="fas fa-shopping-cart "></i> </button> 
               <button  className="btn  btn-primary btns" onClick={this.show} >more information</button>  
               
     

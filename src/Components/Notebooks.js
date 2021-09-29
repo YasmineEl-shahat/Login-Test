@@ -6,10 +6,6 @@ import { Link } from "react-router-dom";
 export default class Notebooks extends React.Component{
     state={
         notebooks:"",
-        id:'',
-        image: '',
-        price: '',
-        name:'',
         devices:JSON.parse(window.localStorage.getItem("devices"))? JSON.parse(window.localStorage.getItem("devices")): []
     }
     componentDidMount(){
@@ -70,9 +66,7 @@ export default class Notebooks extends React.Component{
                                         <img className="" src={`/images/${note.image}`} alt="this is laptop"/>
                                         <Link to={
                                             {
-                                                pathname: '/Details',
-                                                ref:note
-
+                                                pathname: `/${note.category}/${note.id}`
                                             }
                                             } className="name">{note.name}</Link>
                                         <span>${note.price}</span>

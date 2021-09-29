@@ -14,7 +14,7 @@ class AppRoute extends React.Component {
     render() { 
         return (
             <Router>
-                <Route path="/Details" component={Details} exact/>
+                <Route path="/:category/:id" component={Details} exact/>
                 <Route path="/login" component={login} exact />
                 <Route path="/about" component={About} exact />
                 <Route path="/register" component={Signup} exact />
