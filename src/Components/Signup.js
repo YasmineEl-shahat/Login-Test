@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import "../styles/login.css";
 import { Link } from 'react-router-dom';
 import AssureRegister from './AssureRegister';
+
+
 class Signup extends Component {
     state = { 
         userName: "",
@@ -15,6 +17,7 @@ class Signup extends Component {
      
      async componentWillMount(){
         await AssureRegister(this.props);
+       
         if(this.props.location.state){
             this.setState({
                 error: this.props.location.state.error
@@ -23,9 +26,11 @@ class Signup extends Component {
             this.setState({
                 error: ""
             })
+            
         }
         
      }
+
      register= (e) => {
          let RegisterData = {
              userName : this.state.userName,

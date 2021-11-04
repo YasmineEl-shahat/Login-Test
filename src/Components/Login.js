@@ -2,22 +2,42 @@ import React, { Component } from 'react';
 import AssureLogin from './AssureLogin';
 import "../styles/login.css";
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 class Login extends Component {
     state = { 
         userName: "",
         password: "",
         error:""
      }
-     
+     notify = () => toast.success("Registered Successfully!");
+
      async componentWillMount(){
         await AssureLogin(this.props);
-        if(this.props.location.state){
+        console.log(this.props.location.state);
+        if(window.localStorage.getItem("success")){
+           
+            this.notify();
+            window.localStorage.removeItem("success");
+
+        }
+        else if(this.props.location.state){
             this.setState({
                 error: this.props.location.state.error
             })
+        }else{
+            this.setState({
+                error: ""
+            })
+            
         }
+        let loginData = JSON.parse(window.localStorage.getItem("loginData"));
+        let RegisterData = JSON.parse(window.localStorage.getItem("RegisterData"));
+        if(loginData || RegisterData) this.props.history.push("/");
         
      }
+    
      saveLogin= () => {
          let loginData = {
              userName : this.state.userName,
@@ -60,6 +80,8 @@ class Login extends Component {
                     </div>
                 </form>
             </div>
+            <ToastContainer />
+
         </> );
     }
 }

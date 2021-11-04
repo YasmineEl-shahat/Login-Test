@@ -28,7 +28,7 @@ let AssureLogin= async (props) =>{
                        });
                    }
                }).catch(err =>{
-                    error = "request Faild!";
+                error = "request Faild!";
                 props.history.push({
                     pathname: "/login",
                     state: {error}
